@@ -10,14 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
 
+  //Current user information
   currentUser: string = ""
   currentChannel: string = ""
+  //Individual message variable
   messagecontent:string = "";
+  //Messages array
   messages:string[] = [];
+  //Socket-IO Connection
   ioConnnection:any;
 
   constructor(private socketService:SocketService) { }
 
+  //Upon start, start connection to server, user information is used ot join room
   ngOnInit(): void {
     this.initToConnection();
     this.currentUser = sessionStorage.getItem("currentUser");
@@ -25,6 +30,7 @@ export class ChatComponent implements OnInit {
     this.socketService.joinRoom(this.currentUser,this.currentChannel);
   }
 
+  //Initialise socket, when message is ready, send message to server, add returning message to array
   private initToConnection(){
     this.socketService.initSocket();
     this.ioConnnection = this.socketService.onMessage()
@@ -32,7 +38,7 @@ export class ChatComponent implements OnInit {
         this.messages.push(messageObject);
       });
   }
-
+  //If there is message content, send message, username and channel info
   chat(){
     if(this.messagecontent){
       this.socketService.send(this.currentUser,this.currentChannel,this.messagecontent);
@@ -41,7 +47,7 @@ export class ChatComponent implements OnInit {
       console.log('no message');
     }
   }
-
+  //Uses user information to leave room
   leaveRoom() {
     this.socketService.leaveRoom(this.currentUser,this.currentChannel);
   }

@@ -10,31 +10,33 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./group.component.css']
 })
 export class GroupComponent implements OnInit {
-
+  //Group information
   groupName: string;
   groupUser: string;
   groupChannel: string;
   createStatement: Object;
-
+  //Channel Information
   channelName: string;
   channelUser: string;
   channelGroup: string;
   channelObject: Object;
-
+  //Group User Info
   gUserObject: Object;
   gUserArray: String[] = [];
-
+  //Class User Info
   cUserObject: Object;
   cUserArray: String[] = [];
-
+  //Groups data from MongoDB
   groups: Object[] = [];
+  //User data from MongoDB
   users: Object[] = [];
+
   roleArray: String[] = [];
 
   updateObject: Object;
 
   constructor(private GroupService:GroupService, private UserService:UserService) { }
-
+  //Upon start, fetch user data and group dat and store in respective arrays
   ngOnInit(): void {
     this.GroupService.getGroups().subscribe((data)=>{
       this.groups = data;
@@ -43,11 +45,11 @@ export class GroupComponent implements OnInit {
       this.users = data;
     })
   }
-
+  //Returns input as array which can be iterated
   split(input) {
     return input
   }
-
+  //Defunct fucntion
   splitChannelName(input) {
     var currentChannel;
     var nameArray = [];
@@ -57,7 +59,7 @@ export class GroupComponent implements OnInit {
     console.log(nameArray);
     return nameArray;
   }
-
+  //Defunct function
   splitChannelUsers(input) {
     var currentChannel;
     var channelArray = [];
@@ -68,8 +70,9 @@ export class GroupComponent implements OnInit {
     return channelArray;
     
   }
-
+  //Creates group and adds to Group Collection, resets input fields
   createGroup() {
+    //Defines object in accordance with MOngoDB structure for insertion
     this.createStatement = {
       name:this.groupName,
       users:[this.groupUser],
@@ -81,15 +84,18 @@ export class GroupComponent implements OnInit {
       ]
     };
     console.log(this.createStatement);
+    //Call GroupService function to add group to database, subscribe to updates
     this.GroupService.createGroup(this.createStatement).subscribe((data)=>{
       this.groups = data;
     });
+    //Reset fields
     this.groupName = "";
     this.groupUser = "";
     this.groupChannel = "";
   }
-
+  //Creates a new channel, adds to Groups colection, resets fields
   createChannel() {
+    //Defines object in accordance with MOngoDB strucutre for channel insertion
     this.channelObject= {
       parent: this.channelGroup,
       statement:{
@@ -98,14 +104,16 @@ export class GroupComponent implements OnInit {
       }
     }
     console.log(this.channelObject);
+    //Use GroupService to send object for insertion, subscribe for updates
     this.GroupService.createChannel(this.channelObject).subscribe((data)=>{
       this.groups = data;
     });
+    //Reset fields
     this.channelName = "";
     this.channelUser = "";
     this.channelGroup = "";
   }
-
+  //Adds a user to group listing
   addGUser(parentName,i){
     this.gUserObject= {
       parent: parentName,
@@ -117,7 +125,7 @@ export class GroupComponent implements OnInit {
     });
     this.gUserArray[i] = "";
   }
-
+  //Deletes a user from group lisiting
   deleteGUser(parentName,user){
     this.gUserObject= {
       parent: parentName,
@@ -128,7 +136,7 @@ export class GroupComponent implements OnInit {
       this.groups = data;
     });
   }
-
+  //Adds user to channel listing
   addCUser(group,channel,i){
     this.cUserObject = {
       group: group,
@@ -141,7 +149,7 @@ export class GroupComponent implements OnInit {
     });
     this.cUserArray[i] = "";
   }
-
+  //Deletes a user from channel lsiting
   deleteCUser(group, channel,user){
     this.cUserObject= {
       group: group,
@@ -153,7 +161,7 @@ export class GroupComponent implements OnInit {
       this.groups = data;
     });
   }
-
+  //Updates role of user based on if value
   updateRole(id, i) {
     this.updateObject = {
       id: id,

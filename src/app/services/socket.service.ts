@@ -12,11 +12,11 @@ export class SocketService {
   messageObject:Object;
 
   constructor() { }
-
+  //Upon start, connect socket to server
   public initSocket(): void {
     this.socket = io(SERVER_URL);
   }
-
+  //Emit message Object to server
   public send(name, channel, message): void {
     this.messageObject = {
       name: name,
@@ -25,14 +25,14 @@ export class SocketService {
     }
     this.socket.emit('message', this.messageObject);
   }
-
+  //Using observable, keep track of future messages
   public onMessage(): Observable<any> {
     let observable = new Observable(observer=>{
       this.socket.on('message', (data:string) => observer.next(data));
     });
     return observable
   }
-
+  //Join chat room, send message with name and channel
   joinRoom(name, channel) {
     this.messageObject = {
       name: name,
@@ -42,7 +42,7 @@ export class SocketService {
     this.socket.emit('join', this.messageObject);
     console.log(this.messageObject);
   }
-
+  //Leave chat room, send message with name and channel
   leaveRoom(name, channel) {
     this.messageObject = {
       name: name,

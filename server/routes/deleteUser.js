@@ -6,8 +6,10 @@ module.exports = function(app,db,ObjectID){
         }
         userID = req.body;
         console.log(userID);
+        //Convert regular id into ObjectID format
         var objectID = new ObjectID(userID);
         const collection = db.collection('users');
+        //Using ObjectID, find matching user and delete
         collection.deleteOne({_id:objectID},(err,docs)=>{
             collection.find({}).toArray((err,data)=>{
                 res.send(data);

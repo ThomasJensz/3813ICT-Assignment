@@ -5,8 +5,9 @@ module.exports = function(app, db) {
         console.log("getGroups API called")
         
         const collection = db.collection('groups');
-
+        //Find all data
         collection.find({}).toArray((err,data)=>{
+            //Return
             res.send(data);
         })
     })

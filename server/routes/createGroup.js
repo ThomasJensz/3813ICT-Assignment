@@ -8,8 +8,10 @@ module.exports = function(app, db) {
 
         group = req.body;
         const collection = db.collection('groups');
+        //Insert group object onto the end of Group collection
         collection.insertOne(group,(err,dbres) => {
             collection.find({}).toArray((err,data)=>{
+                //Return updated groups
                 res.send(data);
             })
         });
