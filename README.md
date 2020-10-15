@@ -1,10 +1,8 @@
-#ChatCentre
-###3813ICT Documentation
-
+#3813ICT Documentation
 ##Git
 GitHub was used for version control throughout the development of this project, storing versions remotely for backup and for assessment when complete. Commitments were made when multiple related functions were completed and without any major errors that influenced the performance of other previously completed features. There was no use of branching, all commitments were made to the master branch.
 The contents of the repository include the angular project for the client-side application, two package.jsons for managing the server-side and client-side app dependencies, and of course all the files and scripts that make up both apps. Like all GitHub repo’s there is also a .git folder for managing version control data and a ReadMe file that contains relevant project information for developers and assessors.
-Data Structures
+##Data Structures
 All data in the program is stored between two collections in MongoDB, named users and groups. 
 Users is an array of ‘user’ objects, each object containing the id, name, email, password and role of an individual user. All attributes are string values. Below is an example of what the contents of this collection could be.
 [
@@ -60,4 +58,3 @@ User – This is the means of communication with the MongoDB collection of users
 Groups -  This is the means of communication with the MongoDB collection of groups. One function returns all the groups, one create a new group with at least one channel and user, another creates a channel within an existing group with at least one user. Two functions for creating and deleting users of groups and another two functions for creating and deleting channel users.
 ###Models 
 When passing data between functions and components frequently, its important to structure that data carefully so each link in the chain gets what its expecting. The only dedicated file for a model is the users.js file which defines the constructor of a user object with name, id, email, etc. All other objects are defined within the functions of various components. Given that most of the objects had only 2 or 3 attributes and were simple structures, defining them multiple times amongst the applications logic didn’t negatively impact development.
-
