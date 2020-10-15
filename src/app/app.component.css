@@ -1,0 +1,65 @@
+/*#header {
+    background-color: rgb(108, 57, 145);
+    margin: 0px; 
+}
+
+#logoutButton {
+    width: 100px;
+    height: 28px;
+    display: inline;
+    float: right;
+    background-color: rgb(47, 18, 68);
+    text-align: center;
+    padding-top: 8px;
+    margin-right: 100px;
+}
+
+#userDisplay {
+    width: auto;
+    height: 28px;
+    display: inline;
+    float: right;
+    background-color: rgb(47, 18, 68);
+    text-align: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    margin-right: 100px;
+}
+
+#body {
+    width: 40%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 3%;
+    margin-top: 40px;
+}
+
+#background {
+    background-color: rgb(211, 211, 211);
+    padding-top: 10px;
+    padding-bottom: 100%;
+}
+
+h1 {
+    display: inline;
+    color: white;
+    margin-left: 100px;
+}
+
+h3 {
+    display: inline;
+    color: white;
+}
+
+.groupShell {
+    width: 80%;
+    background-color: rgb(108, 57, 145);
+    color: white;
+}
+
+.channelShell {
+    width: 80%;
+    margin: 0 auto;
+    background-color: red;
+}*/

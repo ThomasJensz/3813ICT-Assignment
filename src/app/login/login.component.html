@@ -1,0 +1,39 @@
+
+<div class="join-container">
+    <header class="join-header">
+        <h1>Login</h1>
+    </header>
+    <main class="join-main">
+        <div *ngIf = "signInStatus == false">
+            <p *ngIf = "failStatus == true">Please try again.</p>
+            <form action="chat.html">
+                <div class="form-control">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        [(ngModel)] = "usernameContent"
+                        id="username"
+                        placeholder="Enter username..."
+                        required
+                    />
+                </div>
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input
+                        type="text"
+                        name="password"
+                        [(ngModel)] = "passwordContent"
+                        id="password"
+                        placeholder="Enter password..."
+                        required
+                    />
+                </div>
+                <button type="submit" class="btn" (click) = checkUser()>Login</button>
+            </form>
+        </div>
+        <div *ngIf = "signInStatus == true">
+            <p>Logged In Successfully!</p>
+        </div>
+    </main>
+</div>

@@ -1,0 +1,59 @@
+{
+    "users": [
+       {
+          "id": "001",  
+          "username":"Superman",
+          "email": "1@email.com",
+          "role": "super"
+       },
+     
+       {
+          "id":"002",
+          "username": "Batman",
+          "email": "2@email.com",
+          "role": "group"
+       },
+
+       {
+        "id":"003",
+        "username": "Joker",
+        "email": "3@email.com",
+        "role": "assis"
+       },
+
+       {
+         "id": "004",  
+         "username":"Lex",
+         "email": "4@email.com",
+         "role": "assis"
+      },
+    
+      {
+         "id":"005",
+         "username": "Robin",
+         "email": "5@email.com",
+         "role": "assis"
+      },
+
+      {
+       "id":"006",
+       "username": "Nightwing",
+       "email": "6@email.com",
+       "role": "assis"
+      },
+
+      {
+         "id":"007",
+         "username": "Harley Quinn",
+         "email": "7@email.com",
+         "role": "assis"
+      },
+
+      {
+         "id":"008",
+         "username": "Poison Ivy",
+         "email": "8@email.com",
+         "role": "assis"
+      }
+    ]
+ }

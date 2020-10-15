@@ -1,0 +1,53 @@
+{
+    "groups": [
+       {
+          "name":"Heroes",
+          "users": [
+              "Superman","Batman", "Robin", "Nightwing"
+            ],
+          "channels": [
+              {
+                "name": "Main Heroes",
+                "users": ["Superman", "Batman"]
+              },
+              {
+                "name": "Hero Sidekicks",
+                "users": ["Robin", "Nightwing"]
+              },
+              {
+                "name": "Training",
+                "users": ["Batman", "Nightwing", "Robin"]
+              },
+              {
+                "name": "Everybody Good",
+                "users": ["Superman", "Batman", "Nightwing", "Robin"]
+              }
+            ]
+       },
+     
+       {
+        "name":"Villains",
+        "users": [
+            "Joker","Lex", "Harley Quinn", "Poison Ivy"
+          ],
+          "channels": [
+            {
+              "name": "Main Villains",
+              "users": ["Joker", "Lex"]
+            },
+            {
+              "name": "Villain Sidekicks",
+              "users": ["Harley Quinn", "Poison Ivy"]
+            },
+            {
+              "name": "Scheming",
+              "users": ["Joker", "Harley Quinn", "Poison Ivy"]
+            },
+            {
+              "name": "Everybody Bad",
+              "users": ["Joker", "Lex", "Harley Quinn", "Poison Ivy"]
+            }
+          ]
+        }
+    ]
+ }

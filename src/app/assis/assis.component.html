@@ -1,0 +1,62 @@
+<div class="join-container">
+    <header class="join-header">
+        <h2>Create New Channel</h2>
+    </header>
+    <main class="join-main">
+        <form (submit)=createChannel()>
+            <label for = "name">Name</label>
+            <input type = "text" name = "name" [(ngModel)] = "channelName"><br>
+            <label for = "user">First User</label>
+            <input type = "text" name = "user" [(ngModel)] = "channelUser"><br>
+            <label for = "group">Group Parent</label>
+            <select name = "group" [(ngModel)] = "channelGroup">
+                <option *ngFor = "let group of groups" value = "{{group.name}}">{{group.name}}</option>
+            </select>
+            <button class="btn">Create</button>
+        </form>
+    </main>  
+</div>
+
+<div class="join-container">
+    <header class="join-header">
+        <h2>Edit Group Users</h2>
+    </header>
+    <main class="join-main">
+        <table *ngFor = "let group of groups; let i=index">
+            <h3>{{group.name}}</h3>
+            <tr>
+                <th>Username</th>
+            </tr>
+            <tr *ngFor = "let user of split(group.users); let i=index">
+                <td>{{user}}</td>
+                <td><span (click) = "deleteGUser(group.name,user)" class="btn">Delete</span></td>
+            </tr>
+            <label for = "newUser">Name</label>
+            <input type = "text" name = "newUser" [(ngModel)] = "gUserArray[i]"><br>
+            <button class="btn" (click)="addGUser(group.name,i)">Add New User to {{group.name}}</button>
+        </table>
+    </main>  
+</div>
+
+<div class="join-container">
+    <header class="join-header">
+        <h2>Edit Channel Users</h2>
+    </header>
+    <main class="join-main">
+        <table *ngFor = "let group of groups; let k=index">
+            <h3>{{group.name}}</h3>
+            <div *ngFor = "let channel of split(group.channels); let j=index">
+                <tr>
+                    <th>{{channel.name}}</th>
+                </tr>
+                <tr *ngFor = "let user of split(channel.users); let i=index">
+                    <td>{{user}}</td>
+                    <td><span (click) = "deleteCUser(group.name,channel.name,user)" class="btn">Delete</span></td>
+                </tr>
+                <label for = "newUser">Name</label>
+                <input type = "text" name = "newUser" [(ngModel)] = "cUserArray[j]"><br>
+                <button class="btn" (click)="addCUser(group.name,channel.name,j)">Add New User to {{channel.name}}</button>
+            </div>
+        </table>
+    </main>  
+</div>

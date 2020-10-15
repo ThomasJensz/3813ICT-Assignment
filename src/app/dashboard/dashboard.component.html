@@ -1,0 +1,17 @@
+    
+    <div class="join-container">
+        <header class="join-header">
+            <h2>Your Groups</h2>
+        </header>
+        <main class="join-main">
+            <div *ngFor = 'let result of results'>
+                <h3>{{result[0]}}</h3>
+                <div class = "channelShell" >
+                    <select name = "currentChannel" [(ngModel)] = "currentChannel">
+                        <option *ngFor = "let channel of result[1]" value = "{{channel}}">{{channel}}</option>
+                    </select>
+                    <a routerLink = "/chat" routerLinkActive = "true"><button type="submit" class="btn" (click) = "selectChannel()">Join Channel</button></a>
+                </div>
+            </div>
+        </main>  
+    </div>
